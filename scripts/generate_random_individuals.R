@@ -1,4 +1,4 @@
-#time R --slave --no-save --no-restore --no-environ --silent --args 1200 /tmp/farsite_individuals.txt < ~/git/spif/scripts/generate_random_individuals.R
+#time R --slave --no-save --no-restore --no-environ --silent --args 1200 /tmp/farsite_individuals.txt < scripts/generate_random_individuals.R
 library(msm)
 
 cmd_args = commandArgs(TRUE)
@@ -11,16 +11,16 @@ print(outputFile)
 
 n=nOfIndividuals
 individuals <- data.frame( 
-    p0 =  runif(n, min=2, max=15),   #    1h
-    p1 =  runif(n, min=2, max=15),   #   10h
-    p2 =  runif(n, min=2, max=15),   #  100h
-    p3 =  runif(n, min=20, max=70),  #  herb
-    p4 =  runif(n, min=60, max=100), # 1000h
-    p5 = rtnorm(n, mean=12.83, sd=6.25, 0, 150), # ws
-    p6 =  runif(n, min=0, max=360),  # wd
-    p7 =  runif(n, min=30, max=50),  # th
-    p8 =  runif(n, min=30, max=100), # hh
-    p9 =  runif(n, min=0, max=2),
+    p0 =  runif(n, min=2, max=15),               #    1h
+    p1 =  runif(n, min=2, max=15),               #   10h
+    p2 =  runif(n, min=2, max=15),               #  100h
+    p3 =  runif(n, min=20, max=70),              #  herb
+    p4 =  runif(n, min=60, max=100),             # 1000h
+    p5 = rtnorm(n, mean=12.83, sd=6.25, 0, 150), #    ws
+    p6 =  runif(n, min=0, max=360),              #    wd
+    p7 =  runif(n, min=30, max=50),              #    th
+    p8 =  runif(n, min=30, max=100),             #    hh
+    p9 =  runif(n, min=0, max=2),                #   adj
     p10 = 0,
     p11 = 0,
     p12 = 0,
