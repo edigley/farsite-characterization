@@ -1,6 +1,6 @@
 # Farsite Characterization
 
-# Input Parameters as a Genetic Individual
+## Input Parameters as a Genetic Individual
 
 ## How to generate random individuals:
 
@@ -20,7 +20,7 @@ scripts/generate_random_individuals.sh ${nOfIndividuals} ${individuals}
 scripts/random_individuals_box_plot.sh ${individuals} ${individualsBoxPlot}
 ~~~~
 
-## How to prepare real scenarios to run the predictions:
+## How to prepare real wildfire scenarios to run the predictions:
 
 ~~~~
 wget https://github.com/edigley/fire-scenarios/archive/master.zip -O fire-scenarios-master.zip
@@ -44,12 +44,20 @@ ln -s $(pwd)/fire-scenarios/${scenario}/aux_files/  ${playpen}/
 ln -s $(pwd)/fire-scenarios/${scenario}/bases/      ${playpen}/
 ln -s $(pwd)/fire-scenarios/${scenario}/scripts/    ${playpen}/
 cp    $(pwd)/fire-scenarios/${scenario}/scenario_template_for_histogram.ini ${playpen}/scenario_${scenario}.ini
-sed -i "s/${scenario}_central_point/${scenario}_central_polygon_2/g" ${playpen}/scenario_${scenario}.ini
+sed -i "s#<ignition_file>#${scenario}_central_polygon_2.shp#g"              ${playpen}/scenario_${scenario}.ini
+sed -i "s#<farsite_path>#${FARSITE_DIR}#g"                                  ${playpen}/scenario_${scenario}.ini
 cp    $(pwd)/fire-scenarios/${scenario}/input/pob_0.txt ${playpen}/input/
-cp    $(pwd)/farsite-characterization/${individuals} ${playpen}/
+cp    $(pwd)/farsite-characterization/${individuals}    ${playpen}/
 ~~~~
 
-## How to run a group of individuals:
+## How to run a single individual:
+
+~~~~
+wget https://github.com/edigley/farsite/archive/master.zip -O farsite-master.zip
+unzip farsite-master.zip
+mv farsite-master farsite
+FARSITE_DIR=$(pwd)/farsite/
+~~~~
 
 ~~~~
 wget https://github.com/edigley/spif/archive/master.zip -O spif-master.zip
@@ -57,6 +65,18 @@ unzip spif-master.zip
 mv spif-master spif
 SPIF_DIR=$(pwd)/spif/
 ~~~~
+
+~~~~
+# farsite individual parameters specified directly: gen ind 1h 10h 100h herb 1000h  ws  wd   th  hh  adj
+${SPIF_DIR}/fireSimulator86400 ${scenarioFile} run    0   0  7   3    6   54    87  17  267  43  64  1.7
+~~~~
+
+~~~~
+# to run only the first individual from the generated file
+${SPIF_DIR}/fireSimulator86400 ${scenarioFile} ${individuals} run 0
+~~~~
+
+## How to run a group of individuals:
 
 ~~~~
 cd ${playpen}
