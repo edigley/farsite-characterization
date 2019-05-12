@@ -1,4 +1,22 @@
-# Farsite Characterization
+# Farsite 
+
+The Fire Area Simulator, FARSITE (Finney 1998), is a fire growth model originally developed for planning and management of prescribed natural fires. 
+Its use has since expanded to suppression efforts for wildfires, evaluating fuel treatments (Finney 2001, Stephens 1998, Stratton 2004, van Wagtendonk 1996), and reconstructing past fires (Duncan and Schmalzer 2004). 
+Developed in the Western United States, the model has been validated on fires in Yosemite, Sequoia, and Glacier National Parks (Finney 1993, Finney and Ryan 1995). 
+While the use of this software is growing in the Southwestern United States, the Midwestern United States, and Florida, as well as in other countries, it has not received much attention in the Eastern United States.
+
+FARSITE requires a minimum of five raster layers to generate simulations. 
+These layers are: 
+- elevation, 
+- aspect, 
+- slope, 
+- fuel model, and 
+- canopy cover. 
+
+The landscape data (elevation, slope, and aspect) are used for making adiabatic adjustments for temperature and humidity as well as computing slope effects on fire spread and solar radiation effects on fuel moisture. 
+We created these files from a 30-m digital elevation model (DEM) for the Cliffield Mountain quadrangle.
+
+Simulation vs. Actual Burn
 
 ## Input Parameters as a Genetic Individual
 
