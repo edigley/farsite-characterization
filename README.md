@@ -4,6 +4,8 @@
 
 ## How to generate random individuals:
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/edigley/farsite-characterization/master?filepath=binder%2Frandom_individuals.ipynb)
+
 ~~~~
 wget https://github.com/edigley/farsite-characterization/archive/master.zip -O farsite-characterization-master.zip
 unzip farsite-characterization-master.zip
